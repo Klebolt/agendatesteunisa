@@ -69,7 +69,6 @@
             color: var(--texto-claro);
             padding: 10px 10px;
             text-align: center;
-
             border-bottom: 9px solid var(--cor-verde-lima);
         }
 
@@ -94,7 +93,7 @@
 
         .logo-area2 .frase-impacto {
             margin-top: 0;
-            margin-bottom: 8px; /* Ajuste o espaço para o texto de baixo (span) */
+            margin-bottom: 8px; 
         }
 
         .logo-area img {
@@ -108,29 +107,24 @@
         header h1 { margin: 0; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; }
         header h2 { margin: 5px 0 0; font-size: 1.1rem; opacity: 0.9; font-weight: 400; }
 
-        /* ALTERAÇÃO PARA ORDENAÇÃO VERTICAL (COLUNAS) 
-           Usa column-count em vez de grid para preencher a coluna 1 depois a 2
-        */
         .agenda-grid {
             display: block;
-            column-count: 1;   /* Divide em 2 colunas de texto */
-            column-gap: 15px;  /* Espaço entre as colunas */
+            column-count: 1;   
+            column-gap: 15px;  
             padding: 25px;
-
         }
 
         .agenda-grid2 {
             display: block;
-            column-count: 2;   /* Divide em 2 colunas de texto */
-            column-gap: 15px;  /* Espaço entre as colunas */
+            column-count: 2;   
+            column-gap: 15px;  
             padding: 25px;
-
         }
 
         /* Cards */
         .card {
             background: var(--fundo-card);
-            border: 1px solid #e0e0e0;  /*e0e0e0*/
+            border: 1px solid #e0e0e0;
             border-left: 5px solid var(--cor-azul-forte);
             border-radius: 8px;
             padding: 15px;
@@ -138,11 +132,9 @@
             align-items: center;
             gap: 15px;
             transition: transform 0.2s, box-shadow 0.2s;
-            
-            /* Propriedades vitais para o layout de colunas funcionar */
-            break-inside: avoid;       /* Não deixa o card quebrar no meio */
+            break-inside: avoid;       
             page-break-inside: avoid;
-            margin-bottom: 15px;       /* Espaço inferior entre os cards */
+            margin-bottom: 15px;      
             width: 100%;
         }
 
@@ -157,7 +149,7 @@
             padding: 8px 10px;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 0.90rem; /*0.85rem*/
+            font-size: 0.90rem; 
             text-align: center;
             min-width: 95px;
             display: flex;
@@ -172,7 +164,7 @@
             padding: 8px 10px;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 0.90rem; /*0.85rem*/
+            font-size: 0.90rem;
             text-align: center;
             min-width: 95px;
             display: flex;
@@ -182,11 +174,11 @@
         }
 
         .info-texto {
-            font-size: 0.99rem;  /* 0.95rem*/
+            font-size: 0.99rem;  
             line-height: 1.0;
             font-weight: 500;
             color: var(--texto-escuro);
-            width: 100%; /* Garante espaço para o botão */
+            width: 100%; 
         }
 
         .frase-impacto{
@@ -236,7 +228,7 @@
             color: var(--cor-laranja);
         }
         
-        /* --- CSS PARA OS BOTÕES (FUNCIONALIDADE SOLICITADA) --- */
+        /* --- CSS DOS BOTÕES --- */
         .btn-card-acao {
             display: inline-block;
             margin-top: 8px; 
@@ -262,12 +254,11 @@
         }
         
         .oculto { display: none !important; }
-        /* ------------------------------------------------------ */
         
         /* Mobile adjustment */
         @media (max-width: 600px) {
             .agenda-grid { 
-                column-count: 1; /* Volta para 1 coluna no celular */
+                column-count: 1; 
             }
             .card { flex-direction: column; align-items: flex-start; text-align: left; }
             .data-badge { width: 100%; margin-bottom: 8px; flex-direction: row; }
@@ -320,7 +311,7 @@
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">20/01 à 16/03</div>
+            <div class="data-badge">22/01 à 16/03</div>
             <div class="info-texto">
                 Realização da Avaliação Contínua (AVC)
                 <br>
@@ -334,7 +325,7 @@
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">20/03 à 07/04</div>
+            <div class="data-badge">20/01 à 07/04</div>
             <div class="info-texto">
                 Realização da AVG
                 <br>
@@ -343,7 +334,7 @@
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">21/01 à 30/03</div>
+            <div class="data-badge">20/01 à 30/03</div>
             <div class="info-texto">
                 Realização da Avaliação Integrada (AVI)
                 <br>
@@ -371,7 +362,6 @@
 <div class="container2">
 
     <div class="header2">
-
         <div class="logo-area2"> 
             <h2>Dicas de Estudo</h2>
             <p class="frase-impacto"><b>Projete sua rotina e domine o conteúdo.</b></p>
@@ -425,67 +415,73 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 1. Descobrir o Ano Base do H2
+        
+        // --- 1. DETECTAR O ANO NO HEADER (IGNORANDO TEXTO EXTRA) ---
         const h2Element = document.getElementById('tituloAno');
-        let anoBase = new Date().getFullYear(); 
+        let anoDetectado = new Date().getFullYear(); // Valor padrão
         
         if (h2Element) {
             const textoH2 = h2Element.innerText;
-            const anoEncontrado = textoH2.match(/\d{4}/); 
-            if (anoEncontrado) {
-                anoBase = parseInt(anoEncontrado[0]);
+            // A expressão /\d{4}/ procura por EXATAMENTE 4 dígitos seguidos
+            // Ela ignora "EAD", "-", "/", espaços, etc.
+            const matchAno = textoH2.match(/\d{4}/);
+            if (matchAno) {
+                anoDetectado = parseInt(matchAno[0]);
             }
         }
         
-        // 2. Data de Hoje (sem horas para comparar corretamente)
+        console.log("Ano considerado:", anoDetectado);
+
+        // --- 2. CONFIGURAR DATA DE HOJE ---
         const hoje = new Date();
         hoje.setHours(0,0,0,0);
 
-        // Função auxiliar para criar data a partir de "DD/MM" e anoBase
-        function criarData(diaMesStr, ano) {
+        // Função para criar Data com Dia/Mês do botão + Ano do Header
+        function criarDataComAno(diaMesStr, ano) {
             const partes = diaMesStr.split('/');
             const dia = parseInt(partes[0]);
-            const mes = parseInt(partes[1]) - 1; // Meses em JS são 0-11
+            const mes = parseInt(partes[1]) - 1; // Mês em JS começa em 0
             return new Date(ano, mes, dia);
         }
 
-        // Função principal que verifica link e data
-        function configurarBotao(idBotao, paramUrl) {
+        // --- 3. LÓGICA PRINCIPAL ---
+        function verificarBotao(idBotao, parametroUrl) {
             const urlParams = new URLSearchParams(window.location.search);
-            const linkDestino = urlParams.get(paramUrl);
+            const linkDestino = urlParams.get(parametroUrl);
             const botao = document.getElementById(idBotao);
 
             if (!botao) return;
 
-            // Se NÃO tem link na URL, nem tenta verificar data, deixa oculto.
+            // Se NÃO tem link na URL, mantém oculto
             if (!linkDestino) return;
 
-            // Se tem link, verificamos as datas
+            // Se TEM link, valida as datas
             const inicioStr = botao.getAttribute('data-inicio');
             const fimStr = botao.getAttribute('data-fim');
 
             if (inicioStr && fimStr) {
-                const dataInicio = criarData(inicioStr, anoBase);
-                const dataFim = criarData(fimStr, anoBase);
-                dataFim.setHours(23, 59, 59, 999); // Final do dia
+                // Monta as datas completas usando o ano filtrado do header
+                const dataInicio = criarDataComAno(inicioStr, anoDetectado);
+                const dataFim = criarDataComAno(fimStr, anoDetectado);
+                dataFim.setHours(23, 59, 59, 999);
 
-                // Lógica da Verificação
+                // Verifica se hoje está dentro do prazo
                 if (hoje >= dataInicio && hoje <= dataFim) {
                     botao.href = linkDestino;
                     botao.classList.remove('oculto');
+                    console.log(`Botão ${idBotao} ATIVADO.`);
                 } else {
-                    console.log(`Botão ${idBotao} BLOQUEADO (Fora do prazo: ${inicioStr} até ${fimStr})`);
+                    console.log(`Botão ${idBotao} BLOQUEADO. Fora do prazo.`);
                 }
             }
         }
 
-        // 3. Executa a configuração para os 3 botões
-        configurarBotao('btnAVC', 'avc');
-        configurarBotao('btnAVG', 'avg');
-        configurarBotao('btnAVI', 'avi');
+        // Executa para os 3 botões
+        verificarBotao('btnAVC', 'avc');
+        verificarBotao('btnAVG', 'avg');
+        verificarBotao('btnAVI', 'avi');
     });
 </script>
 
 </body>
 </html>
-
