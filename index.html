@@ -41,6 +41,20 @@
             border: 1px solid #e1e1e1;
         }
 
+        .span2{
+            font-size: 13px;
+        }
+
+        .container2 {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--fundo-card);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #e1e1e1;
+        }
+
         /* Cabeçalho */
         header {
             background-color: var(--cor-azul-forte);
@@ -50,12 +64,41 @@
             border-bottom: 6px solid var(--cor-verde-lima);
         }
 
+        .header2{
+            background-color: var(--cor-azul-forte);
+            color: var(--texto-claro);
+            padding: 10px 10px;
+            text-align: center;
+
+            border-bottom: 9px solid var(--cor-verde-lima);
+        }
+
         /* Logo Branco (Filtro) */
         .logo-area {
             display: block;
             text-align: center;
             margin-bottom: 15px;
         }
+
+        .logo-area2 {
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+
+
+        .logo-area2 h2 {
+            display: block;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+
+        .logo-area2 .frase-impacto {
+            margin-top: 0;
+            margin-bottom: 8px; /* Ajuste o espaço para o texto de baixo (span) */
+        }
+
 
         .logo-area img {
             height: auto;
@@ -67,34 +110,6 @@
 
         header h1 { margin: 0; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; }
         header h2 { margin: 5px 0 0; font-size: 1.1rem; opacity: 0.9; font-weight: 400; }
-
-        /* --- ALTERAÇÃO: CSS PARA OS NOVOS BOTÕES DENTRO DOS CARDS --- */
-        .btn-card-acao {
-            display: inline-block;
-            margin-top: 8px; /* Espaço entre o texto e o botão */
-            background-color: var(--cor-laranja); /* Cor laranja pois são avaliações */
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: background 0.3s, transform 0.2s;
-            border: 1px solid transparent;
-        }
-
-        .btn-card-acao:hover {
-            background-color: #fff;
-            color: var(--cor-laranja);
-            border-color: var(--cor-laranja);
-            transform: scale(1.05);
-        }
-        
-        /* Classe para esconder o botão se não houver link */
-        .oculto { display: none !important; }
-        /* ----------------------------------------- */
 
 
         /* ALTERAÇÃO PARA ORDENAÇÃO VERTICAL (COLUNAS) 
@@ -108,10 +123,18 @@
 
         }
 
+        .agenda-grid2 {
+            display: block;
+            column-count: 2;   /* Divide em 2 colunas de texto */
+            column-gap: 15px;  /* Espaço entre as colunas */
+            padding: 25px;
+
+        }
+
         /* Cards */
         .card {
             background: var(--fundo-card);
-            border: 1px solid #e0e0e0;
+            border: 1px solid #e0e0e0;  /*e0e0e0*/
             border-left: 5px solid var(--cor-azul-forte);
             border-radius: 8px;
             padding: 15px;
@@ -138,7 +161,22 @@
             padding: 8px 10px;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 1.5rem; /*0.85rem*/
+            font-size: 0.90rem; /*0.85rem*/
+            text-align: center;
+            min-width: 95px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        .data-badge2 {
+            background-color: var(--cor-verde-lima);
+            color: var(--texto-escuro);
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.90rem; /*0.85rem*/
             text-align: center;
             min-width: 95px;
             display: flex;
@@ -148,11 +186,18 @@
         }
 
         .info-texto {
-            font-size: 1.5rem;  /* 0.95rem*/
-            line-height: 1.4;
+            font-size: 0.99rem;  /* 0.95rem*/
+            line-height: 1.0;
             font-weight: 500;
             color: var(--texto-escuro);
-            width: 100%; /* Garante que o texto ocupe o espaço para o botão ficar abaixo se necessário */
+            width: 100%; /* Garante espaço para o botão */
+            
+        }
+
+        .frase-impacto{
+
+            font-size: 15px;
+            padding: 0px 0px;
         }
 
         /* Card de AVALIAÇÃO */
@@ -160,6 +205,12 @@
             border: 1px solid var(--cor-laranja);
             border-left: 6px solid var(--cor-laranja);
             background-color: #fffbf7;
+        }
+
+        .card.avaliacao2 {
+            border: 1px solid var(--cor-verde-lima);
+            border-left: 6px solid var(--cor-verde-lima);
+            background-color: #fff;
         }
 
         .card.avaliacao .data-badge {
@@ -177,7 +228,7 @@
             background-color: #f9f9f9;
             padding: 20px;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 0.90rem;
             color: #666;
             border-top: 1px solid #eee;
         }
@@ -190,6 +241,34 @@
             font-weight: bold;
             color: var(--cor-laranja);
         }
+
+        /* --- CSS ADICIONADO PARA OS BOTÕES --- */
+        .btn-card-acao {
+            display: inline-block;
+            margin-top: 8px; 
+            background-color: var(--cor-laranja); 
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem; /* Levemente menor para caber melhor */
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background 0.3s, transform 0.2s;
+            border: 1px solid transparent;
+            line-height: 1.2;
+        }
+
+        .btn-card-acao:hover {
+            background-color: #fff;
+            color: var(--cor-laranja);
+            border-color: var(--cor-laranja);
+            transform: scale(1.05);
+        }
+        
+        .oculto { display: none !important; }
+        /* ------------------------------------- */
         
         /* Mobile adjustment */
         @media (max-width: 600px) {
@@ -211,89 +290,138 @@
             <img src="https://cdn.jsdelivr.net/gh/Klebolt/logounisa@main/logounisaagenda.png" alt="Logo Unisa">
         </div>
         <h1>Agenda Geral da Disciplina</h1>
-        <h2>EAD - 2025/1</h2>
+        <h2 id="tituloAno">EAD - 2026/1</h2>
     </header>
 
     <div class="agenda-grid">
 
         <div class="card">
             <div class="data-badge">03/02</div>
-            <div class="info-texto"><strong>Início das aulas</strong></div>
+            <div class="info-texto"><srong>Início das aulas</srong></div>
         </div>
 
         <div class="card">
-            <div class="data-badge">17/02 à 22/02</div>
-            <div class="info-texto"><strong>1ª Aula ao Vivo</strong></div>
+            <div class="data-badge">09/02 à 13/02</div>
+            <div class="info-texto">1ª Aula ao Vivo</div>
         </div>
 
         <div class="card">
-            <div class="data-badge">24/02 à 01/03</div>
+            <div class="data-badge">19/02 à 28/03</div>
             <div class="info-texto"><strong>2ª Aula ao Vivo</strong></div>
         </div>
 
         <div class="card">
-            <div class="data-badge">10/03 à 15/03</div>
+            <div class="data-badge">02/03 à 07/03</div>
             <div class="info-texto"><strong>3ª Aula ao Vivo</strong></div>
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">10/03 à 16/03</div>
+            <div class="data-badge">06/03 à 12/03</div>
             <div class="info-texto">Agendamento da Avaliação Global (AVG)</div>
         </div>
 
         <div class="card">
-            <div class="data-badge">17/03 à 22/03</div>
+            <div class="data-badge">09/03 à 14/03</div>
             <div class="info-texto"><strong>4ª Aula ao vivo</strong></div>
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">18/03 à 24/03</div>
+            <div class="data-badge">22/01 à 16/03</div>  <!-- 10/03 à 16/03-->
             <div class="info-texto">
                 Realização da Avaliação Contínua (AVC)
                 <br>
-                <a id="btnAVC" href="#" class="btn-card-acao oculto" target="_blank">CLIQUE AQUI PARA REALIZAR A PROVA</a>
+                <a id="btnAVC" href="#" class="btn-card-acao oculto" target="_blank" data-inicio="10/03" data-fim="16/03">CLIQUE AQUI PARA REALIZAR A PROVA</a>
             </div>
         </div>
 
         <div class="card">
-            <div class="data-badge">24/03 à 29/03</div>
+            <div class="data-badge">16/03 à 21/03</div>
             <div class="info-texto"><strong>5ª Aula ao vivo</strong></div>
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">26/03 à 08/04</div>
+            <div class="data-badge">20/03 à 07/04</div>
             <div class="info-texto">
                 Realização da AVG
                 <br>
-                <a id="btnAVG" href="#" class="btn-card-acao oculto" target="_blank">CLIQUE AQUI PARA REALIZAR A PROVA</a>
+                <a id="btnAVG" href="#" class="btn-card-acao oculto" target="_blank" data-inicio="20/03" data-fim="07/04">CLIQUE AQUI PARA REALIZAR A PROVA</a>
             </div>
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">28/03 à 03/04</div>
+            <div class="data-badge">24/03 à 30/03</div>
             <div class="info-texto">
                 Realização da Avaliação Integrada (AVI)
                 <br>
-                <a id="btnAVI" href="#" class="btn-card-acao oculto" target="_blank">CLIQUE AQUI PARA REALIZAR A PROVA</a>
+                <a id="btnAVI" href="#" class="btn-card-acao oculto" target="_blank" data-inicio="24/03" data-fim="30/03">CLIQUE AQUI PARA REALIZAR A PROVA</a>
             </div>
         </div>
 
         <div class="card">
-            <div class="data-badge">31/03 à 05/04</div>
+            <div class="data-badge">23/03 à 28/03</div>
             <div class="info-texto"><strong>6ª Aula ao vivo</strong></div>
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">09/04</div>
+            <div class="data-badge">08/04</div>
             <div class="info-texto">Solicitação de Recurso (AVG)</div>
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">17/04</div>
-            <div class="info-texto">DIVULGAÇÃO DAS NOTAS: AVC, AVI e AVG</div>
+            <div class="data-badge">13/04</div>
+            <div class="info-texto">Divulgação de notas: AVC, AVI e AVG</div>
         </div>
 
+
     </div>
+
+<div class="container2">
+
+    <div class="header2">
+
+        <div class="logo-area2"> 
+            <h2>Dicas de Estudo</h2>
+            <p class="frase-impacto"><b>Projete sua rotina e domine o conteúdo.</b></p>
+             <span class="span2">As datas para os estudos de cada página são apenas <b>sugestões.</b></span>
+            </div>
+    </div>
+
+    <div class="agenda-grid2">
+
+        <div class="card avaliacao2">
+            <div class="data-badge2">03/02 à 10/02</div>
+            <div class="info-texto"><strong>Estude a página 1</strong></div>
+        </div>
+
+        <div class="card avaliacao2">
+            <div class="data-badge2">11/02 à 18/02</div>
+            <div class="info-texto"><strong>Estude a página 2</strong></div>
+        </div>
+
+        <div class="card avaliacao2">
+            <div class="data-badge2">19/02 à 27/02</div>
+            <div class="info-texto"><strong>Estude a página 3</strong></div>
+        </div>
+
+        <div class="card avaliacao2">
+            <div class="data-badge2">28/02 à 08/03</div>
+            <div class="info-texto"><strong>Estude a página 4</strong></div>
+        </div>
+
+        <div class="card avaliacao2">
+            <div class="data-badge2">09/03 à 16/03</div>
+            <div class="info-texto"><strong>Estude a página 5</strong></div>
+        </div>
+
+        <div class="card avaliacao2">
+            <div class="data-badge2">17/03 à 26/03</div>
+            <div class="info-texto"><strong>Estude a página 6</strong></div>
+        </div>
+
+
+    </div>
+
+
 
     <footer>
         <div class="legenda">
@@ -301,42 +429,71 @@
         </div>
         <br>
         <p><b>PARTICIPE DE TODAS AS AULAS AO VIVO. AS DATAS ESTÃO INDICADAS NO BOTÃO "AULA AO VIVO".</b></p>
-        <span>OBS: As datas para os estudos de cada página são apenas <b>sugestões.</b></span>
+        
     </footer>
 
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Pega os parâmetros da URL
-        const urlParams = new URLSearchParams(window.location.search);
+        // 1. Descobrir o Ano Base do H2 (ex: "EAD - 2026/1")
+        const h2Element = document.getElementById('tituloAno');
+        let anoBase = new Date().getFullYear(); // Padrão: ano atual do sistema
         
-        // --- 1. CONFIGURAÇÃO DO BOTÃO AVC ---
-        // Procura por "&avc=" no link
-        const linkAVC = urlParams.get('avc');
-        const btnAVC = document.getElementById('btnAVC');
-        if (linkAVC) {
-            btnAVC.href = linkAVC;
-            btnAVC.classList.remove('oculto'); 
+        if (h2Element) {
+            const textoH2 = h2Element.innerText;
+            const anoEncontrado = textoH2.match(/\d{4}/); 
+            if (anoEncontrado) {
+                anoBase = parseInt(anoEncontrado[0]);
+            }
+        }
+        
+        // 2. Data de Hoje (sem horas para comparar corretamente)
+        const hoje = new Date();
+        hoje.setHours(0,0,0,0);
+
+        // Função auxiliar para criar data a partir de "DD/MM" e anoBase
+        function criarData(diaMesStr, ano) {
+            const partes = diaMesStr.split('/');
+            const dia = parseInt(partes[0]);
+            const mes = parseInt(partes[1]) - 1; // Meses em JS são 0-11
+            return new Date(ano, mes, dia);
         }
 
-        // --- 2. CONFIGURAÇÃO DO BOTÃO AVG ---
-        // Procura por "&avg=" no link
-        const linkAVG = urlParams.get('avg');
-        const btnAVG = document.getElementById('btnAVG');
-        if (linkAVG) {
-            btnAVG.href = linkAVG;
-            btnAVG.classList.remove('oculto'); 
+        // Função principal que verifica link e data
+        function configurarBotao(idBotao, paramUrl) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const linkDestino = urlParams.get(paramUrl);
+            const botao = document.getElementById(idBotao);
+
+            if (!botao) return;
+
+            // Se NÃO tem link na URL, nem tenta verificar data, deixa oculto.
+            if (!linkDestino) return;
+
+            // Se tem link, verificamos as datas
+            const inicioStr = botao.getAttribute('data-inicio');
+            const fimStr = botao.getAttribute('data-fim');
+
+            if (inicioStr && fimStr) {
+                const dataInicio = criarData(inicioStr, anoBase);
+                const dataFim = criarData(fimStr, anoBase);
+                dataFim.setHours(23, 59, 59, 999); // Final do dia
+
+                // Lógica da Verificação
+                if (hoje >= dataInicio && hoje <= dataFim) {
+                    botao.href = linkDestino;
+                    botao.classList.remove('oculto');
+                } else {
+                    console.log(`Botão ${idBotao} BLOQUEADO (Fora do prazo: ${inicioStr} até ${fimStr})`);
+                }
+            }
         }
 
-        // --- 3. CONFIGURAÇÃO DO BOTÃO AVI ---
-        // Procura por "&avi=" no link
-        const linkAVI = urlParams.get('avi');
-        const btnAVI = document.getElementById('btnAVI');
-        if (linkAVI) {
-            btnAVI.href = linkAVI;
-            btnAVI.classList.remove('oculto'); 
-        }
+        // 3. Executa a configuração para os 3 botões
+        configurarBotao('btnAVC', 'avc');
+        configurarBotao('btnAVG', 'avg');
+        configurarBotao('btnAVI', 'avi');
     });
 </script>
 
