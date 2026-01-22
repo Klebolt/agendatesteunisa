@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Links - Agenda UNISA</title>
+    <style>
+        /* ============================================================
+           VARIÁVEIS E CORES DA IDENTIDADE
+           ============================================================ */
+        :root {
+            --azul-forte: #1C3B70;
+            --verde-lima: #99BD2E;
+            --laranja:    #D97828;
+            --fundo:      #f4f6f9;
+            --branco:     #ffffff;
+            --cinza-txt:  #333333;
+            --borda:      #cccccc;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--fundo); 
+            color: var(--cinza-txt);
+            height: 100vh; /* Ocupa a altura total da tela */
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Remove barra de rolagem */
+            position: relative; /* Para posicionar o rodapé */
+        }
+
+        /* O CONTAINER PRINCIPAL (CARD) */
+        .container { 
+            width: 95%; 
+            max-width: 1100px; 
+            background: var(--branco); 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(28, 59, 112, 0.15); 
+            border-top: 8px solid var(--azul-forte);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* Ajuste para garantir que não corte em telas menores na vertical */
+            max-height: 90vh; 
+        }
+
+        /* CABEÇALHO */
+        .header { text-align: center; margin-bottom: 5px; }
+        .header h2 { 
+            color: var(--azul-forte); 
+            font-size: 2.2rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 5px; 
+        }
+        .header p { font-size: 1.1rem; color: #666; font-weight: 500; }
+
+        /* GRID PARA OS INPUTS (LADO A LADO) */
+        .grid-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 3 Colunas iguais */
+            gap: 20px;
+        }
+
+        .full-width { width: 100%; }
+
+        /* ESTILO DOS CAMPOS */
+        .form-group { display: flex; flex-direction: column; }
+        
+        label { 
+            margin-bottom: 8px; 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            color: var(--azul-forte); 
+        }
+
+        input[type="text"] { 
+            width: 100%; 
+            padding: 15px 15px; 
+            border: 2px solid var(--borda); 
+            border-radius: 8px; 
+            font-size: 1.1rem; 
+            color: #333;
+            background-color: #fafafa;
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]:focus { 
+            border-color: var(--verde-lima); 
+            background-color: #fff; 
+            box-shadow: 0 0 0 4px rgba(153, 189, 46, 0.2);
+        }
+
+        /* BOTÕES */
+        button { 
+            width: 100%; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 10px; 
+            font-size: 1.3rem; 
+            font-weight: 800; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:active { transform: scale(0.98); }
+
+        .btn-gerar { 
+            background-color: var(--verde-lima); 
+            color: var(--azul-forte); 
+            margin-top: 10px;
+        }
+        .btn-gerar:hover { background-color: #88aa28; color: #fff; }
+
+        .btn-copiar { 
+            background-color: var(--laranja); 
+            color: #fff; 
+            font-size: 1.1rem;
+            padding: 12px;
+            margin-top: 10px;
+            width: auto;
+            min-width: 200px;
+        }
+        .btn-copiar:hover { background-color: #c0681f; }
+
+        /* ÁREA DE RESULTADO */
+        .resultado { 
+            background: #f1f3f5; 
+            border: 2px dashed var(--azul-forte);
+            padding: 15px; 
+            border-radius: 10px; 
+            text-align: center;
+            display: none; 
+        }
+
+        .resultado strong { display: block; margin-bottom: 8px; color: var(--azul-forte); font-size: 1.1rem; }
+        
+        #linkFinal { 
+            font-family: 'Courier New', monospace; 
+            font-size: 1rem; 
+            color: #555; 
+            background: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+
+        /* DIREITOS AUTORAIS NO RODAPÉ */
+        .footer-credits {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--azul-forte);
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Gerador de Links</h2>
+        <p>Agenda da Disciplina - UNISA</p>
+    </div>
+    
+    <div class="form-group full-width">
+        <label>Link Base da Agenda</label>
+        <input type="text" id="base" value="https://klebolt.github.io/agendatesteunisa/">
+    </div>
+
+    <div class="grid-row">
+        <div class="form-group">
+            <label>Link da AVC</label>
+            <input type="text" id="avc" placeholder="Cole o link AVC...">
+        </div>
+
+        <div class="form-group">
+            <label>Link da AVI</label>
+            <input type="text" id="avi" placeholder="Cole o link AVI...">
+        </div>
+        
+        <div class="form-group">
+            <label>Link da AVG</label>
+            <input type="text" id="avg" placeholder="Cole o link AVG...">
+        </div>
+
+    </div>
+
+    <button class="btn-gerar" onclick="gerarLink()">GERAR LINK COMPLETO</button>
+
+    <div id="boxResultado" class="resultado">
+        <strong>✅ Link pronto!</strong>
+        <div id="linkFinal"></div>
+        <button class="btn-copiar" onclick="copiarTexto()">COPIAR LINK</button>
+    </div>
+</div>
+
+<div class="footer-credits">
+    © Desenvolvido por Kleber Pereira Gomes
+</div>
+
+<script>
+    function gerarLink() {
+        const base = document.getElementById('base').value.trim();
+        const avc = document.getElementById('avc').value.trim();
+        const avg = document.getElementById('avg').value.trim();
+        const avi = document.getElementById('avi').value.trim();
+
+        if(!avc || !avg || !avi) {
+            alert("⚠️ POR FAVOR, PREENCHA TODOS OS 3 LINKS DAS PROVAS!");
+            return;
+        }
+
+        let separador = base.includes('?') ? '&' : '?';
+        const linkCompleto = `${base}${separador}avc=${avc}&avg=${avg}&avi=${avi}`;
+        
+        document.getElementById('linkFinal').innerText = linkCompleto;
+        document.getElementById('boxResultado').style.display = 'block';
+    }
+
+    function copiarTexto() {
+        const texto = document.getElementById('linkFinal').innerText;
+        navigator.clipboard.writeText(texto).then(() => {
+            const btn = document.querySelector('.btn-copiar');
+            const original = btn.innerText;
+            btn.innerText = "COPIADO! 👍";
+            btn.style.backgroundColor = "#1C3B70";
+            setTimeout(() => {
+                btn.innerText = original;
+                btn.style.backgroundColor = "";
+            }, 2000);
+        });
+    }
+</script>
+
+</body>
+</html>
