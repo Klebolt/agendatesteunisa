@@ -68,33 +68,28 @@
         header h1 { margin: 0; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; }
         header h2 { margin: 5px 0 0; font-size: 1.1rem; opacity: 0.9; font-weight: 400; }
 
-        /* --- NOVO ESTILO PARA O BOTÃO DINÂMICO --- */
-        .area-botao-acao {
-            text-align: center;
-            padding: 20px 20px 0 20px;
-        }
-
-        .btn-dinamico {
+        /* --- ALTERAÇÃO: CSS PARA OS NOVOS BOTÕES DENTRO DOS CARDS --- */
+        .btn-card-acao {
             display: inline-block;
-            background-color: var(--cor-verde-lima);
-            color: var(--cor-azul-forte);
+            margin-top: 8px; /* Espaço entre o texto e o botão */
+            background-color: var(--cor-laranja); /* Cor laranja pois são avaliações */
+            color: #fff;
             text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.1rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background 0.3s, transform 0.2s;
+            border: 1px solid transparent;
         }
 
-        .btn-dinamico:hover {
-            transform: scale(1.05);
+        .btn-card-acao:hover {
             background-color: #fff;
-            border-color: var(--cor-verde-lima);
-            color: var(--cor-verde-lima);
-            cursor: pointer;
+            color: var(--cor-laranja);
+            border-color: var(--cor-laranja);
+            transform: scale(1.05);
         }
         
         /* Classe para esconder o botão se não houver link */
@@ -157,6 +152,7 @@
             line-height: 1.4;
             font-weight: 500;
             color: var(--texto-escuro);
+            width: 100%; /* Garante que o texto ocupe o espaço para o botão ficar abaixo se necessário */
         }
 
         /* Card de AVALIAÇÃO */
@@ -218,12 +214,6 @@
         <h2>EAD - 2025/1</h2>
     </header>
 
-    <div class="area-botao-acao">
-        <a id="btnAtividade" href="https://www.youtube.com/" class="btn-dinamico oculto" target="_blank">
-            Acessar Atividade Avaliativa AVCC
-        </a>
-    </div>
-
     <div class="agenda-grid">
 
         <div class="card">
@@ -258,7 +248,11 @@
 
         <div class="card avaliacao">
             <div class="data-badge">18/03 à 24/03</div>
-            <div class="info-texto">Realização da Avaliação Contínua (AVC)</div>
+            <div class="info-texto">
+                Realização da Avaliação Contínua (AVC)
+                <br>
+                <a id="btnAVC" href="#" class="btn-card-acao oculto" target="_blank">CLIQUE AQUI PARA REALIZAR A PROVA</a>
+            </div>
         </div>
 
         <div class="card">
@@ -268,12 +262,20 @@
 
         <div class="card avaliacao">
             <div class="data-badge">26/03 à 08/04</div>
-            <div class="info-texto">Realização da AVG</div>
+            <div class="info-texto">
+                Realização da AVG
+                <br>
+                <a id="btnAVG" href="#" class="btn-card-acao oculto" target="_blank">CLIQUE AQUI PARA REALIZAR A PROVA</a>
+            </div>
         </div>
 
         <div class="card avaliacao">
             <div class="data-badge">28/03 à 03/04</div>
-            <div class="info-texto">Realização da Avaliação Integrada (AVI)</div>
+            <div class="info-texto">
+                Realização da Avaliação Integrada (AVI)
+                <br>
+                <a id="btnAVI" href="#" class="btn-card-acao oculto" target="_blank">CLIQUE AQUI PARA REALIZAR A PROVA</a>
+            </div>
         </div>
 
         <div class="card">
@@ -306,25 +308,34 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 1. Pega os parâmetros da URL atual
+        // Pega os parâmetros da URL
         const urlParams = new URLSearchParams(window.location.search);
         
-        // 2. Procura pelo parâmetro chamado "atividade"
-        // Exemplo de link esperado: meulink.html?atividade=https://moodle.com/link-da-prova
-        const linkDestino = urlParams.get('atividade');
-        
-        const botao = document.getElementById('btnAtividade');
+        // --- 1. CONFIGURAÇÃO DO BOTÃO AVC ---
+        // Procura por "&avc=" no link
+        const linkAVC = urlParams.get('avc');
+        const btnAVC = document.getElementById('btnAVC');
+        if (linkAVC) {
+            btnAVC.href = linkAVC;
+            btnAVC.classList.remove('oculto'); 
+        }
 
-        // 3. Se existir um link, atualiza o botão e mostra ele
-        if (linkDestino) {
-            botao.href = linkDestino;
-            botao.classList.remove('oculto'); // Remove a classe que esconde o botão
-            
-            // Opcional: Decodificar o link caso o Moodle envie codificado
-            // botao.href = decodeURIComponent(linkDestino); 
-        } else {
-            // Se não tiver link, o botão continua oculto (segurança visual)
-            console.log("Nenhum link de atividade foi passado na URL.");
+        // --- 2. CONFIGURAÇÃO DO BOTÃO AVG ---
+        // Procura por "&avg=" no link
+        const linkAVG = urlParams.get('avg');
+        const btnAVG = document.getElementById('btnAVG');
+        if (linkAVG) {
+            btnAVG.href = linkAVG;
+            btnAVG.classList.remove('oculto'); 
+        }
+
+        // --- 3. CONFIGURAÇÃO DO BOTÃO AVI ---
+        // Procura por "&avi=" no link
+        const linkAVI = urlParams.get('avi');
+        const btnAVI = document.getElementById('btnAVI');
+        if (linkAVI) {
+            btnAVI.href = linkAVI;
+            btnAVI.classList.remove('oculto'); 
         }
     });
 </script>
