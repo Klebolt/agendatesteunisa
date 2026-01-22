@@ -86,8 +86,6 @@
             margin-bottom: 15px;
         }
 
-
-
         .logo-area2 h2 {
             display: block;
             text-align: center;
@@ -99,7 +97,6 @@
             margin-bottom: 8px; /* Ajuste o espaço para o texto de baixo (span) */
         }
 
-
         .logo-area img {
             height: auto;
             width: 250px;
@@ -110,7 +107,6 @@
 
         header h1 { margin: 0; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; }
         header h2 { margin: 5px 0 0; font-size: 1.1rem; opacity: 0.9; font-weight: 400; }
-
 
         /* ALTERAÇÃO PARA ORDENAÇÃO VERTICAL (COLUNAS) 
            Usa column-count em vez de grid para preencher a coluna 1 depois a 2
@@ -191,11 +187,9 @@
             font-weight: 500;
             color: var(--texto-escuro);
             width: 100%; /* Garante espaço para o botão */
-            
         }
 
         .frase-impacto{
-
             font-size: 15px;
             padding: 0px 0px;
         }
@@ -241,8 +235,8 @@
             font-weight: bold;
             color: var(--cor-laranja);
         }
-
-        /* --- CSS ADICIONADO PARA OS BOTÕES --- */
+        
+        /* --- CSS PARA OS BOTÕES (FUNCIONALIDADE SOLICITADA) --- */
         .btn-card-acao {
             display: inline-block;
             margin-top: 8px; 
@@ -251,7 +245,7 @@
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 6px;
-            font-size: 0.85rem; /* Levemente menor para caber melhor */
+            font-size: 0.85rem; 
             font-weight: bold;
             text-transform: uppercase;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -268,7 +262,7 @@
         }
         
         .oculto { display: none !important; }
-        /* ------------------------------------- */
+        /* ------------------------------------------------------ */
         
         /* Mobile adjustment */
         @media (max-width: 600px) {
@@ -326,7 +320,7 @@
         </div>
 
         <div class="card avaliacao">
-            <div class="data-badge">22/01 à 16/03</div>  <!-- 10/03 à 16/03-->
+            <div class="data-badge">10/03 à 16/03</div>
             <div class="info-texto">
                 Realização da Avaliação Contínua (AVC)
                 <br>
@@ -372,7 +366,6 @@
             <div class="info-texto">Divulgação de notas: AVC, AVI e AVG</div>
         </div>
 
-
     </div>
 
 <div class="container2">
@@ -383,7 +376,7 @@
             <h2>Dicas de Estudo</h2>
             <p class="frase-impacto"><b>Projete sua rotina e domine o conteúdo.</b></p>
              <span class="span2">As datas para os estudos de cada página são apenas <b>sugestões.</b></span>
-            </div>
+        </div>
     </div>
 
     <div class="agenda-grid2">
@@ -418,10 +411,7 @@
             <div class="info-texto"><strong>Estude a página 6</strong></div>
         </div>
 
-
     </div>
-
-
 
     <footer>
         <div class="legenda">
@@ -429,16 +419,15 @@
         </div>
         <br>
         <p><b>PARTICIPE DE TODAS AS AULAS AO VIVO. AS DATAS ESTÃO INDICADAS NO BOTÃO "AULA AO VIVO".</b></p>
-        
     </footer>
 
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 1. Descobrir o Ano Base do H2 (ex: "EAD - 2026/1")
+        // 1. Descobrir o Ano Base do H2
         const h2Element = document.getElementById('tituloAno');
-        let anoBase = new Date().getFullYear(); // Padrão: ano atual do sistema
+        let anoBase = new Date().getFullYear(); 
         
         if (h2Element) {
             const textoH2 = h2Element.innerText;
