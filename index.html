@@ -142,6 +142,7 @@
             width: 100%; 
         }
         .frase-impacto{ font-size: 15px; padding: 0px 0px; }
+        
         /* Card de AVALIAÇÃO */
         .card.avaliacao {
             border: 1px solid var(--cor-laranja);
@@ -157,10 +158,12 @@
             background-color: var(--cor-laranja);
             color: white;
         }
+        /* AQUI ESTÁ A REGRA QUE DEIXA NEGRITO SEM USAR TAG STRONG */
         .card.avaliacao .info-texto {
-            color:var(--texto-escuro);
-            font-weight: 700;
+            color: var(--texto-escuro);
+            font-weight: 700; /* Negrito via CSS */
         }
+        
         footer {
             background-color: #f9f9f9;
             padding: 20px;
@@ -236,7 +239,7 @@
 
         <div class="card avaliacao">
             <div class="data-badge">12/03</div>
-            <div class="info-texto"><strong>Prazo limite da 1° Entrega do PI</strong></div>
+            <div class="info-texto">Prazo limite da 1° Entrega do PI</div>
         </div>
 
         <div class="card">
@@ -246,21 +249,21 @@
 
         <div class="card avaliacao">
             <div class="data-badge">31/03</div>
-            <div class="info-texto"><strong>Entrega Final do PI</strong></div>
+            <div class="info-texto">Entrega Final do PI</div>
         </div>
 
         <div class="card avaliacao">
             <div class="data-badge">17/04</div>
-            <div class="info-texto"><strong>Divulgação das notas do PI</strong></div>
+            <div class="info-texto">Divulgação das notas do PI</div>
         </div>
 
     </div>
 
     <footer>
         <div class="legenda">
-            <span>● DATAS EM LARANJA INDICAM AVALIAÇÕES E DIVULGAÇÕES DE NOTAS</span>
+            <span>● DATAS EM LARANJA INDICAM PRAZOS E NOTAS</span>
         </div>
-        </footer>
+    </footer>
 </div>
 
 <script>
